@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedir Perdón</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1 id="header">¿Me disculpas Tebaan?</h1>
+    <p id="message"></p>
+    <img id="perdonGif" src="perdon.gif" alt="Muñequito pidiendo perdón">
+    <img id="graciasGif" src="gracias.gif" alt="Muñequito agradeciendo" style="display: none;">
+    <button onclick="changeMessage('Sí')">Sí</button>
+    <button onclick="changeMessage('No')">No</button>
+  </div>
+
+  <script>
+    var disculpameeCounter = 0;
+
+    function changeMessage(response) {
+      var header = document.getElementById("header");
+      var message = document.getElementById("message");
+      var perdonGif = document.getElementById("perdonGif");
+      var graciasGif = document.getElementById("graciasGif");
+
+      if (response === "Sí") {
+        header.style.display = "none";
+        message.textContent = "¡Gracias!";
+        perdonGif.style.display = "none";
+        graciasGif.style.display = "block";
+        disculpameeCounter = 0; // Reiniciar contador cuando se dice "Sí"
+      } else {
+        var messageText = "Disculpame";
+        for (var i = 0; i < disculpameeCounter; i++) {
+          messageText += "e";
+        }
+        message.textContent = messageText;
+        perdonGif.style.display = "block";
+        graciasGif.style.display = "none";
+        disculpameeCounter++; // Incrementar contador cada vez que se dice "No"
+      }
+    }
+  </script>
+</body>
+</html>
+
